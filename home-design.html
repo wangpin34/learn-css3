@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>首页</title>
+    <style>
+
+    body {
+        padding:0;
+        margin:0;
+    }
+
+    .home {
+        width: 100%;
+        height: 100%;
+        min-height: 700px;
+        overflow: hidden;
+        font-family: "MingLiU";
+        overflow-y: hidden;
+        overflow-x: auto;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    .home .main {
+        position: absolute;
+        top: 30%;
+        left: 36%;
+    }
+
+    .home .main .title {
+        font-size: 5em;
+        font-weight: normal;
+        color: white;
+        margin-bottom: 150px;
+        display: block;
+    }
+
+    .blur {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        margin: 0;
+        padding: 0;
+        /* FireFox, Chrome, Opera */
+        /*-webkit-filter: blur(5px);*/
+        -webkit-filter: grayscale(0.5);
+    }
+
+    .links .side-link {
+        position: absolute;
+        top: 30px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        opacity: 0.9;
+        z-index: 999999;
+        background-color: rgba(0, 0, 0, 0.7);
+        background-position: center;
+        background-size: 16px;
+        background-repeat: no-repeat;
+        left: 30px;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACOElEQVR4Xu1b0VECQQx9qUA70A7ECtQK1AqECpRKhAqECoQKxAo8KhA6wArivHP35g4EZ8cvkmSGmfvYD97bd3sv2UTgPMQ5fgQBbQWo6jWABwDnAPhsKRYAVgCmIsLnOmoFqOopgGcAfUuID2CZABiKyCYT8OIIfOZlIiIDSbJ/c7Lz2zBvSMAMwK1TAuYkQJ2C/zkEgwBVfhrOnKpgTQWMADw6JWBMAmh6KgAnzkj4AtDLPoAGiF7AU9yLyKzJBVS1B4CfROvnwRrAnYhQ9bvJUCKCeQDtsaXYAFhk4J1cwBLKUiyRDpcyZm19KMDajpbiCQWUMmZtfSjA2o6W4vlVASlBsmaJ1yLC1L8T7VyA1pdp8ZNBG5xB0w4z/R+zItzkAsn/v6b7gFIVHeN6KoHZYJXT4Q/mxseI5B//uRKRSxZEKHleiniMIQnwuPt5s6uoCkdZXJWloQuPBwCAZRyC3Hn1qYKliDRlcS8V4fymL9kO0BihpAJaYXoC/qxekvAyhFZ41LHC2wdgSoZ4Y2QpVgeTIUtIS7BEQaSELYtrQwEWd7UEUyighC2La0MBFne1BNOOAlKB1Grj5Hxvg0RqmWWfkDULvC2IpiLcLot7bJIaiMgkt8mxMGqtJ+ivo4AXI3VZ3H2j5KeD936fGlZRFo+yeAxM1JNifkdmUkGUU1Qcl/MUHJ/rt8fm+Dn0QsKU1e9mbC5ve7LDdIW0w1fG5PCeBic5LtcdnDQGtAhO1AOK6DK4+Bvbg8x9GqiOpgAAAABJRU5ErkJggg==');
+    }
+
+    .links .home-link {
+        position: absolute;
+        top: 30px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        opacity: 0.9;
+        z-index: 999999;
+        background-color: rgba(0, 0, 0, 0.7);
+        background-position: center;
+        background-size: 16px;
+        background-repeat: no-repeat;
+        left: 90px;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACp0lEQVR4Xu2b/VHcMBDFdysIJSQVhA4IHZAOQgUJFQAVhFQQOiAd5NIBdJAOAhU85sE6OcgdlrSSLXOrf25uRrK1P6/2PflDZceb7nj8EgDmygAAb0XkvZ3/RlV/zzGXWTIAwGcRORORPQv6lv9V9dvUECYHAOC7iHzaEuilqh5PCWEyAAB4tb++EPwQ96WInKgqs6J5mwSABf9TRPYTI7oWkcMpIDQHAIBBM+1Tgx8YEcKxqvK3WWsKwILnlR+KXW4gXAbMhGYQmgEAwELHNV8a/ACLEFgTWBuqtyYALHimfc3G5VAdQnUAIzLnBVJdJqsCaBz8X5ms6RWqACiQOW8mVJNJNwDz9FcFMlcDwkfvHsIFoILMeSG4ZbIYAIAjMzhemasBgQrxo+RARQAayVzJ/NfHFMlkNgAAp7aV9U64xXhuqc9zDpwFYCKZy5n/pr5ZXiEJgMkcK/0H7+wmGr8SESrE6JZ6FMAMGl+LUZJXeBFABzLnhTEqk1sBvILg13eTW7fUGwF0KnPebNgok/8BsDu2F96zdTr+y/M7z08ALETmvGyfyOQDAKv0vIFBe7sLjbaZS+JWFyxz3gv1KJMAeNNyKQbHG/Tz8SsCYDoQwJvaR+/8eHcishp1gkMQAPgsjxuhJbRzVeV8R1sAGEVkHSIDYglEDYgiGCoQMujyAb9SFcf6HWT2X+/elQ+4odNMuT+3HoHtUehSS0B0BeBd6eMrg/CnIBP6AaCqyW5zU6AAEADyCUQGdLMZiiUQNSCKYKhAfhH/NyJkMHxAGKFwggU1JJxgOMFengu8JivM9/+zX4GfCUDyO4NZLg0An6gO3/ol1aYZAPAbxOTPc7IAMGJ7RTb9BIlrcRtNeyKVBFtErnNfmc0GkDqTpfQLAEu5Uq3meQ+1RoXGtPuSRgAAAABJRU5ErkJggg==');
+    }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        <img class="blur" src="img/night.jpg" />
+        <div class="main">
+            <span class="title">影歌的博客</span>
+            <br/>
+        </div>
+    </div>
+    <div class="links">
+        <a href="#"><span class="home-link"></span></a>
+        <a href="#" class="side-link"></a>
+    </div>
+</body>
+
+</html>

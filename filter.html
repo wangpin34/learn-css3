@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>滤镜(filter)</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+    .blur {
+        /* FireFox, Chrome, Opera */
+        -webkit-filter: blur(10px);
+        /* Chrome, Opera */
+        -moz-filter: blur(10px);
+        -ms-filter: blur(10px);
+        filter: blur(10px);
+        filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+        /* IE6~IE9 */
+    }
+
+    .grayscale /*灰度*/{
+        -webkit-filter: grayscale(1);
+    }
+
+    .sepia /*褐色*/{
+        -webkit-filter: sepia(1);
+    }
+
+    .saturat
+    /*饱和度*/
+
+    {
+        -webkit-filter: saturate(3);
+    }
+
+    .hue-rotate
+    /*色相*/
+
+    {
+        -webkit-filter: hue-rotate(90deg);
+    }
+
+    .invert
+    /*反色*/
+
+    {
+        -webkit-filter: invert(1);
+    }
+
+    .opacity
+    /*透明度*/
+
+    {
+        -webkit-filter: opacity(0.5);
+    }
+
+    .brightness
+    /*亮度*/
+
+    {
+        -webkit-filter: brightness(0.5);
+    }
+
+    .contrast
+    /*对比度*/
+
+    {
+        -webkit-filter: contrast(2);
+    }
+
+    .drop-shadow
+    /*阴影*/
+
+    {
+        -webkit-filter: drop-shadow(15px 15px 15px green);
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span><a href="index.html">home</a></span>
+        <hr/>
+        <h4>滤镜</h4>
+        <br/>
+        <h5>原图</h5>
+        <img src="img/home.jpg" />
+        <br/>
+        <h5>清晰度（模糊，毛玻璃）</h5>
+        <img class="blur" src="img/home.jpg" />
+        <br/>
+        <h5>灰度</h5>
+        <img class="grayscale" src="img/home.jpg" />
+        <br/>
+        <h5>褐色（怀旧）</h5>
+        <img class="sepia" src="img/home.jpg" />
+        <br/>
+        <h5>饱和度</h5>
+        <img class="saturat" src="img/home.jpg" />
+        <br/>
+        <h5>色相</h5>
+        <img class="hue-rotate" src="img/home.jpg" />
+        <br/>
+        <h5>反色</h5>
+        <img class="invert" src="img/home.jpg" />
+        <br/>
+        <h5>透明度</h5>
+        <img class="opacity" src="img/home.jpg" />
+        <br/>
+        <h5>亮度</h5>
+        <img class="brightness" src="img/home.jpg" />
+        <br/>
+        <h5>对比度</h5>
+        <img class="contrast" src="img/home.jpg" />
+        <br/>
+        <h5>阴影</h5>
+        <img class="drop-shadow" src="img/home.jpg" />
+        <h4>参考</h4>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">filter</a></li>
+        </ul>
+        <h4>注：非webkit浏览器可能需要修改style，加对应的前缀</h4>
+    </div>
+</body>
+
+</html>

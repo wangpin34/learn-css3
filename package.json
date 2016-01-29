@@ -1,0 +1,16 @@
+{
+  "name": "learn-css3",
+  "version": "0.0.0",
+  "description": "learn css3",
+  "main": "index.js",
+  "scripts": {
+    "watch":"browser-sync start --server --files *.css,*.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learn",
+    "css3"
+  ],
+  "author": "wangpin",
+  "license": "MIT"
+}
