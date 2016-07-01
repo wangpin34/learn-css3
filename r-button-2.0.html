@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>径向按钮 2.0</title>
+		<style>
+			#main {
+				margin: 200px auto;
+				width: 300px;
+				height: 300px;
+				border-radius: 100%;
+				background-color: #dec674;
+				position: relative;
+			}
+
+			#mainBtn{
+				width: 50px;
+			    height: 50px;
+			    background-color: #508a88;
+			    color: #ffffff;
+			    font-weight: bold;
+			    font-size: 15px;
+			    position: absolute;
+			    transform: translate(125px,125px);
+			    border-radius: 100%;
+			    vertical-align: middle;
+			    line-height: 50px;
+			    text-align: center;
+			    cursor: pointer;
+			}
+
+			#items {
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				list-style-type: none;
+				margin: 0;
+				position: absolute;
+				transition: transform ease-in-out 0.5s;
+				transform: scale(0);
+			}
+
+
+			#items li span {
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				border-radius: 100%;
+				text-align: center;
+				background-color: #50b7c1;
+				color: #ffffff;
+				font-weight: normal;
+				vertical-align: middle;
+				line-height: 50px;
+				cursor: pointer;
+			}
+
+			#item li span:hover {
+				opacity: 1;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<ul id="items">
+				<li><span>音乐</span></li>
+				<li><span>视频</span></li>
+				<li><span>小说</span></li>
+				<li><span>照片</span></li>
+				<li><span>朋友</span></li>
+				<li><span>待办</span></li>
+			</ul>
+			<div id="mainBtn">我的</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="./lib/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		
+	$(function(){
+		var items = $('#items').find('span');
+		var sum = items.length;
+		var r = $('#main')[0].clientWidth / 2;
+		var itemOffset = items[0].clientWidth / 2;
+		var c = 0.017453293;
+		var fromAngle = 90, 
+			endAngle = 270,
+			gap = (endAngle - fromAngle) / sum;
+
+		var transCache = [],
+			loaded = false;
+
+		function init(){
+
+			if(!loaded){
+				for(var i = 0; i < sum; i++){
+					var angle = gap * (i + 0.5);
+					var tranX = Math.floor(r + r * Math.sin( angle * c)) - itemOffset;
+					var tranY = Math.floor(r - r * Math.cos( angle * c)) - itemOffset;
+					transCache.push({x: tranX, y: tranY});
+				}
+				loaded = true;
+			}
+
+			items.each(function(index, item){
+				var translate = ['translate(', transCache[index].x, 'px,', transCache[index].y, 'px)'].join('');
+				$(item).css({
+					transform: translate,
+					opacity: .7});
+
+				$(item).mouseover(function(){
+					$(item).css({opacity: 1});
+				});
+
+				$(item).mouseout(function(){
+					$(item).css({opacity: .7});
+				})
+			});
+
+		}
+
+		init();
+
+		function expand(){
+			$('#items').css('transform', 'scale(1)');
+		}
+
+		function close(){
+			$('#items').css('transform', 'scale(0)');
+		}
+
+		var expanded = false;
+		$('#mainBtn').click(function(){
+			if(expanded){
+				expanded = false;
+				close();
+			}else{
+				expanded = true;
+				expand();
+			}
+		})
+	});
+
+	</script>
+</html>
+
