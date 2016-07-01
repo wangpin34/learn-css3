@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>transform 的应用</title>
+<style>
+
+	.center  {
+		margin: 0 auto;
+		list-style-type: none;
+		padding: 0;
+		text-align: center;
+	}
+
+	ul li div {
+		margin: 50px auto;
+		width: 100px;
+		height: 100px;
+		background-color: #00b4e1;
+		color: #ffffff;
+		font-weight: bold;
+	}
+
+	.translateX45px {
+		transform: translateX(45px);
+	}
+
+	.translateXY45px {
+		transform: translate(45px, 45px);
+	}
+
+	.translateXY3d {
+		transform: translate3d(45px, 45px, 100px);
+	}
+
+	.scaleX50 {
+		transform: scaleX(1.5);
+	}
+	
+	.scaleY50 {
+		transform: scaleY(1.5);
+	}
+
+	.x45 {
+		transform: rotateX(45deg);
+	}
+
+	.y45 {
+		transform: rotateY(45deg);
+	}
+
+	.z45 {
+		transform: rotateZ(45deg);
+	}
+
+	.xyz45 {
+		transform: rotate3d(1,1,1, 45deg);
+		-webkit-transform: rotate3d(1,1,1, 45deg);
+	}
+
+	.twoD30 {
+		transform: rotate(30deg);
+		-webkit-transform: rotate(30deg);
+	}
+
+	.skewX30 {
+		transform: skewX(30deg);
+	}
+
+	.skewY30 {
+		transform: skewY(30deg);
+	}
+
+	.skewX30Y60 {
+		transform: skew(30deg, 40deg);
+	}
+
+</style>
+</head>
+<body>
+
+	<ul class="center">
+		<li><div>正常状态</div></li>
+		<li><div class="translateX45px">延x轴移动45px</div></li>
+		<li><div class="translateXY45px">延x，y轴各移动45px</div></li>
+		<li><div class="translateXY3d">3d移动，暂不支持z轴的移动</div></li>
+		<li><div class="scaleX50">x轴方向伸展50%</div></li>
+		<li><div class="scaleY50">Y轴方向伸展50%</div></li>
+		<li><div class="x45">绕x轴旋转45度</div></li>
+		<li><div class="y45">绕y轴旋转45度</div></li>
+		<li><div class="z45">绕z轴旋转45度</div>
+		<li><div class="xyz45">绕x,y,z轴各旋转45度</div></li>	
+		<li><div class="twoD30">2d旋转30度</div></li>
+		<li><div class="skewX30">x轴倾斜30度</div></li>
+		<li><div class="skewY30">Y轴倾斜30度</div></li>
+		<li><div class="skewX30Y60">x轴倾斜30度，y轴倾斜60度</div></li>
+	</ul>
+
+	
+</body>
+</html>
