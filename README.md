@@ -7,6 +7,7 @@ css3 学习
 * [博客首页](https://cdn.rawgit.com/wangpin34/learn-css3/master/home-design.html)
 * [边框](https://cdn.rawgit.com/wangpin34/learn-css3/master/border.html)
 * [转换](https://cdn.rawgit.com/wangpin34/learn-css3/master/transform.html)
+* [过渡](https://cdn.rawgit.com/wangpin34/learn-css3/master/transition.html)
 * [动画](https://cdn.rawgit.com/wangpin34/learn-css3/master/animation.html)
 
 ##　推荐教程

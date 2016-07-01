@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>动画</title>
+<style>
+.center  {
+    margin: 0 auto;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.flap {
+    background-color: #00b4e1;
+    margin: 50px auto;
+    transform-origin: 50px;
+    animation: flap 1.5s ease-in-out infinite;
+}
+
+.cubes {
+    margin: 50px auto;
+    background-color: #ffffff;
+}
+
+.cubes .cube {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    display: inline-block;
+    float: left;
+}
+
+.cubes .cube:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 100% 100%;
+    animation: cube 2.4s ease-in-out infinite both;
+}
+
+.cubes .cube1 {
+    
+}
+
+.cubes .cube2 {
+    transform: rotateZ(90deg);
+}
+
+.cubes .cube3 {
+    transform: rotateZ(180deg);
+}
+
+.cubes .cube4 {
+    transform: rotateZ(270deg);
+}
+
+.cubes .cube1:before {
+    background-color: lightgrey;
+}
+
+.cubes .cube2:before {
+    animation-delay: 0.3s;
+    background-color: grey;
+}
+
+.cubes .cube3:before {
+    animation-delay: 0.6s;
+    background-color: #00b4e1;
+}
+
+.cubes .cube4:before {
+    animation-delay: 0.9s;
+    background-color: black;
+}
+
+@keyframes flap {
+    0%{
+        transform: perspective(200px);
+    }
+
+    40%,75%{
+        transform: perspective(200px) rotateX(180deg);
+    }
+
+    90%,100% {
+        transform: perspective(200px) rotateX(180deg) rotateY(180deg);
+    }
+}
+
+@keyframes cube {
+     0%, 10% {
+       -webkit-transform: perspective(300px) rotateX(-180deg);
+        transform: perspective(300px) rotateX(-180deg);
+        opacity: 0; 
+    } 25%, 65% {
+        -webkit-transform: perspective(300px) rotateX(0deg);
+        transform: perspective(300px) rotateX(0deg);
+        opacity: 1; 
+    } 
+    90%, 100% {
+         -webkit-transform: perspective(300px) rotateY(180deg);
+            transform: perspective(300px) rotateY(180deg);
+         opacity: 0;
+    } 
+
+}
+
+
+
+</style>
+</head>
+<body>
+
+    <ul class="center">
+        <li><div class="flap"></div></li>
+        <li>
+            <div class="cubes">
+                <div class="cube cube1"></div>
+                <div class="cube cube2"></div>
+                <div class="cube cube4"></div>
+                <div class="cube cube3"></div>
+            </div>
+        </li>
+    </ul>
+
+</body>
+</html>
