@@ -53,10 +53,7 @@
 				vertical-align: middle;
 				line-height: 50px;
 				cursor: pointer;
-			}
-
-			#item li span:hover {
-				opacity: 1;
+				transition: transform 1s ease-in-out;
 			}
 
 
@@ -84,9 +81,9 @@
 		var r = $('#main')[0].clientWidth / 2;
 		var itemOffset = items[0].clientWidth / 2;
 		var c = 0.017453293;
-		var fromAngle = 90, 
-			endAngle = 270,
-			gap = (endAngle - fromAngle) / sum;
+		var fromAngle = 270, 
+			endAngle = 90,
+			gap = Math.abs((endAngle - fromAngle) / sum);
 
 		var transCache = [],
 			loaded = false;
@@ -95,7 +92,7 @@
 
 			if(!loaded){
 				for(var i = 0; i < sum; i++){
-					var angle = gap * (i + 0.5);
+					var angle = fromAngle + gap * (i + 0.5);
 					var tranX = Math.floor(r + r * Math.sin( angle * c)) - itemOffset;
 					var tranY = Math.floor(r - r * Math.cos( angle * c)) - itemOffset;
 					transCache.push({x: tranX, y: tranY});
@@ -110,11 +107,11 @@
 					opacity: .7});
 
 				$(item).mouseover(function(){
-					$(item).css({opacity: 1});
+					$(item).css({opacity: 1, transform: translate + ' scale(1.5)'});
 				});
 
 				$(item).mouseout(function(){
-					$(item).css({opacity: .7});
+					$(item).css({opacity: .7, transform: translate});
 				})
 			});
 
