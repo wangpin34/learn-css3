@@ -10,6 +10,7 @@ css3 学习
 * [过渡](https://cdn.rawgit.com/wangpin34/learn-css3/master/transition.html)
 * [径向按钮](https://cdn.rawgit.com/wangpin34/learn-css3/master/r-button.html)
 * [径向按钮 2.0](https://cdn.rawgit.com/wangpin34/learn-css3/master/r-button-2.0.html)
+* [时钟](https://cdn.rawgit.com/wangpin34/learn-css3/master/clock.html)
 * [动画](https://cdn.rawgit.com/wangpin34/learn-css3/master/animation.html)
 
 ##　推荐教程

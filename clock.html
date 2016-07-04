@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>时钟</title>
+<style>
+
+	body {
+		text-align: center;
+	}
+
+	.clockBox {
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		border-radius: 100%;
+		display: inline-block;
+		vertical-align: middle;
+		background-color: #f05b72;	
+	}
+
+	.scales {
+		width: 96%;
+		height: 96%;
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		transform: translate(2%, 2%);
+		list-style-type: none;
+	}
+
+	.scales li span {
+		width: 2px;
+		height: 2px;
+		background-color: green;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.scales li span.per {
+		height: 10px;
+		transform-origin: 1px 0;
+	}
+
+	.middle {
+		width: 10px;
+		height: 10px;
+		background-color: grey;
+		border-radius: 100%;
+		position: absolute;
+		transform: translate(95px, 95px);
+		z-index: 9999;
+	}
+
+	.hand {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(99.5px, 11px);
+		transform-origin: 0.5px 89px;
+		width: 1px;
+		height: 89px;
+		background: black;
+	}
+
+	.hand.hour {
+		width: 4px;
+		height: 49px;
+		transform: translate(98px, 51px);
+		transform-origin: 2px 49px;
+	}
+
+	.hand.min {
+		width: 2px;
+		height: 69px;
+		transform: translate(99px, 31px);
+		transform-origin: 1px 69px;
+	}
+
+</style>
+</head>
+<body>
+<div class="clockBox">
+	<ul class="scales"></ul>
+	<div class="middle"></div>
+	<div class="hand hour"></div>
+	<div class="hand min"></div>
+	<div class="hand sec"></div>
+</div>
+</body>
+<script type="text/javascript" src="./lib/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var scales = $('.scales'),
+		total = 60,
+		per = 5,
+		gap = 360 / total,
+		c = 0.017453293,
+		r = $('.scales')[0].clientWidth / 2;
+
+	function addScales(){
+		for(var i=0; i<total; i++){
+			scales.append('<li><span></span></li>');
+		}
+	}
+
+	function makeScales(){
+		addScales();
+		scales.find('span').each(function(index, span){
+			var transformAttrs = [],
+				translate = '',
+				rotateZ = '';
+
+			var angle = gap * (index + 1);
+			var tranX = Math.ceil(r + r * Math.sin( angle * c));
+			var tranY = Math.ceil(r - r * Math.cos( angle * c));
+
+
+			if((index + 1)%per === 0 && (index + 1) > 0) {
+				$(span).attr('class','per');
+				rotateZ = 'rotateZ(' + angle + 'deg)';
+			}
+
+			translate = ['translate(', tranX, 'px,', tranY, 'px)'].join('');
+
+			//必须先translate， 后 rotateZ
+			transformAttrs.push(translate);
+			transformAttrs.push(rotateZ);
+
+			$(span).css({transform: transformAttrs.join(' ')});
+		})
+
+	}
+
+	function setTime(){
+
+		var hourHand = $('.hour'),
+			minHand = $('.min'),
+			secHand = $('.sec');
+
+		function adjust(){
+			var date = new Date(),
+			hour = date.getHours(),
+			min = date.getMinutes(),
+			sec = date.getSeconds();
+
+			hourHand.css({transform: 'translate(98px, 51px) rotateZ(' + (( (hour + min/60)/12)*360) + 'deg)'}); //秒对时针的位置影响很小，故不考虑。
+			minHand.css({transform: 'translate(99px, 31px) rotateZ(' + (( (min + sec/60)/60)*360) + 'deg)'});
+			secHand.css({transform: 'translate(99.5px, 11px) rotateZ(' + (sec/60) * 360 + 'deg)'});
+		}
+
+		setInterval(adjust, 1000);
+
+	}
+
+	makeScales();
+
+	setTime();
+
+});
+</script>
+</html>
